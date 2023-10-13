@@ -1,0 +1,60 @@
+.Carousel{
+    width: 100%;
+    height: 50% !important;
+}
+.carrousel .slide{
+    min-width: 100%;
+    align-items: center;
+
+
+    min-height: 20%;
+    margin: 0px;
+}
+
+.titulo{
+    margin: 80px;
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.info1 {
+    transition: 0.5s ease-in-out;
+    width: 40vw;
+}
+
+.info2 {
+    transition: 0.5s ease-in-out;
+    width: 40vw;
+}
+
+.info3 {
+    transition: 0.5s ease-in-out;
+    width: 40vw;
+}
+
+.title{
+    transition: 0.5s ;
+    display: flex;
+    justify-content: center;
+}
+
+.infos{
+    margin: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border: none; 
+}
+img.imgs{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    opacity: 0.9;
+}
+
+.imgContainer{
+    width: 100%;
+    height:40rem;
+}

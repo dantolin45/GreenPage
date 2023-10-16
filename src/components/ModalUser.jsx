@@ -4,6 +4,7 @@ import user from '../img/user.png';
 import '../styles/ModalUser.css';
 import FormikUser from "./FormikUser";
 
+
 const ModalUser = () => {
 
 
@@ -11,15 +12,15 @@ const ModalUser = () => {
     
     const handleShow = () => setShow(true);
 
-
     const handleClose = () => setShow(false);
+
 
 
 
     return (
         <>
             <button variant="primary" className="userItem" onClick={handleShow}>
-                <img className="user" src={user} alt="tierra" />
+                <img className="user" src={user} alt="user" />
             </button>
 
             <Modal className="modalUser"
@@ -29,11 +30,13 @@ const ModalUser = () => {
                 keyboard={false}
             >
                 <Modal.Header closeButton className="modalHeader">
+                    
                     <Modal.Title className="modalTitle">Login</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="modalBody">
                     <FormikUser/>
                 </Modal.Body>
+                
             </Modal>
         </>
     );

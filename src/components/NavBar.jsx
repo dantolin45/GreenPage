@@ -2,13 +2,39 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import '../styles/NavBar.css';
 import tierra from '../img/tierra.png';
-
+import user from '../img/user.png';
 import ModalUser from "./ModalUser";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { useUserContext } from "../context/userContext";
 
 const Navbar = () => {
 
+    const context = useUserContext();
+
+    function isLogged ()
+    {
+        const username = window.localStorage.getItem('UserName');
+        
+        if(window.localStorage.getItem('isLogged'))
+        {
+
+            return(
+                <>
+                    <button variant="primary" className="userItem" onClick={context.logOut} >
+                        <img className="user" src={user} alt="user" />
+                        <p className="nav-User">{username}</p>
+                    </button>
+                </>
+            );
+        }
+        else{
+            return(
+                <>
+                    <ModalUser/>
+                </>
+            );
+        }
+    }
 
     return (
         <>
@@ -32,7 +58,7 @@ const Navbar = () => {
 
                         </div>
                         <li className="nav-user-item">
-                            <ModalUser/>
+                            {isLogged()}
                         </li>
                     </ul>
                 </div>

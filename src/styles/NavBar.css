@@ -1,3 +1,4 @@
+
 .userItem{
 
     display: flex;
@@ -7,6 +8,7 @@
     object-fit: contain; 
     background-color: #00584200; 
     border: 0px solid #00000000;
+    transition: 333ms all;
 }
 
 .navContent{
@@ -61,7 +63,27 @@
         
 }
 
-
+.nav-User{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transition: 0.5s ease-in-out;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 22px;
+    font-family: "Montserrat",sans-serif;
+    color: #fcfcfc;
+    font-weight: 600;
+    line-height: 50px;
+    text-decoration: dotted;
+    text-transform: none;
+    position: relative;
+    letter-spacing: 0.82px;
+}
+.nav-User:hover{
+    transition: 0.5s ease-in-out;
+    color: #080808; 
+}
 .nav-link-router{
     transition: 0.5s ease-in-out;
     color: rgb(255, 255, 255);
@@ -97,10 +119,12 @@
     width: 30%;
     height: 100%; 
     display: flex;
-    align-items: center;
     justify-content: center;
-    
-
+    margin-top: 60px;
+    display: flex;
+    height: 50px;
+    align-items: center;
+    transition: 333ms all;
 }
 
 .userButton {

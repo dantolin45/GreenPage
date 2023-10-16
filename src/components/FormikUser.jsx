@@ -1,55 +1,83 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Field,Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import React, { useState } from "react";
+import React from "react";
 import Modal from 'react-bootstrap/Modal';
-
-const FormikUser = () => {
-
-    const [name, setName] = useState("");
-    const [password, setPassword] = useState("");
+import { useUserContext } from "../context/userContext";
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
 
-        alert(`
-        Name: ${name}
-        Password: ${password}
-      `)
-    };
+const FormikUser =() =>{
 
-    const validationSchema = Yup.object().shape({
-        name: Yup.string().required("Un nombre es requerido"),
+    
+    const context= useUserContext();
+    
+    const SignupSchema = Yup.object().shape({
+        name: Yup.string()
+            .max(15, 'Must be 15 characters or less')
+            .required("Un nombre es requerido"),
+            
         password: Yup.string()
             .required("Una contraseña es requerida")
             .min(8, "La contraseña debe de constar de al menos 8 caracteres"),
 
     });
 
-
-    return (
-        <>
-            <Formik
-                initialValues={{ name, password }}
-                validationSchema={validationSchema}
-                onSubmit={handleSubmit}
-            >
-                <Form>
-                    <label htmlFor="name">Name</label>
-                    <Field name="name" type="text" />
-                    <ErrorMessage name="name" />
-
-                    <label htmlFor="password">Password</label>
-                    <Field name="password" type="password" />
+    
+return (
+    <>
+        <Formik
+            initialValues={{
+                name: '',
+                password: ''
+            }}
+            validationSchema={SignupSchema}
+            onSubmit={async (values) => {
+                await new Promise((r) => setTimeout(r, 500));
+                alert("Bienvenido "+ values.name + " !");
+                
+                context.changueUser(values);
+            }}
+        >
+     
+                <Form >
+                <label> Usuario:
+                    <Field 
+                    className="input-text"
+                    type="text" 
+                    placeholder="Introduce tu usuario" 
+                    name="name" 
+                    autoCapitalize="true"
+                    maxLength="8" 
+                    size="100"
+                    required
+                    autoComplete="off"
+                    />
+                    </label>
+                    <p className="error-message">
+                    <ErrorMessage className="error-message" name="name" />
+                    </p>
+                    
+                    <label> Contraseña: <Field 
+                    className="input-text"
+                    type="password" 
+                    placeholder="Contraseña" 
+                    name="password" 
+                    autoCapitalize="false"
+                    size="100"
+                    required
+                    /></label>
+                    <p className="error-message">
                     <ErrorMessage name="password" />
-                    <Modal.Footer>
-                        <button variant="primary" type="submit">
-                            Log In
-                        </button>
+                    </p>
+                    <Modal.Footer >
+                        <button className="logInButton"  type="submit" >Log In</button>
+
                     </Modal.Footer>
                 </Form>
-            </Formik>
-        </>)
+      
+        </Formik>
+    </>
+    )
 }
 
 export default FormikUser;
